@@ -1,0 +1,143 @@
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Knuth {
+	final static Random rnd = new Random(Calendar.getInstance().getTimeInMillis());
+
+	private static void swap(long[] x, int first, int second) {
+		long temp = x[first];
+		x[first] = x[second];
+		x[second] = temp;
+	}
+
+	public static void insertionsort(long [] x) {
+		for (int i = 1; i < x.length; i++) {
+			if (x[i] >= x[i-1])
+				continue;
+			long temp = x[i];
+			int j;
+			for (j = i-1; j >= 0; j--) {
+				if (x[j] > temp)
+					x[j+1] = x[j];
+				else {
+					break;
+				}
+			}
+			x[j+1] = temp;
+		}
+	}	
+	
+	public static void quicksort(long[] x, int left, int right, int k) {
+		if (right <= left)
+			return;
+
+		if ((right - left) < k) {
+			if (x[left] > x[right])
+				swap(x, left, right);
+			return;
+		}
+		
+		int pivotIndex = (Math.abs(rnd.nextInt()) % (right - left + 1)) + left;
+		long pivot = x[pivotIndex];
+		int i = left, j = right;
+
+		while (i < j) {
+			while (x[i] < pivot)
+				i++;
+			while (x[j] > pivot)
+				j--;
+			if (i < j)
+				swap(x, i, j);
+		}
+
+		if (left < j)
+			quicksort(x, left, j, k);
+		if (right > i)
+			quicksort(x, i, right, k);
+
+	}
+
+	public static void knuthQuicksort(long[] x, int left, int right, int k) {
+		quicksort(x, left, right, k);
+		insertionsort(x);
+	}
+
+	public static int[] getRandomArray() {
+		Random rnd = new Random(Calendar.getInstance().getTimeInMillis());
+		final int n = 10000000;
+		int[] x = new int[n];
+		HashSet<Integer> set = new HashSet<>();
+		while (set.size() < n) {
+			set.add((Math.abs(rnd.nextInt()) % 100000000));
+		}
+		int j = 0;
+		for (Iterator iterator = set.iterator(); iterator.hasNext();) {
+			Integer integer = (Integer) iterator.next();
+			x[j] = integer.intValue();
+			j++;
+		}
+		return x;
+
+	}
+	
+	public static void generateRandomNumbersFile(long size, long upperLimit) throws IOException {
+		StringBuilder numbers = new StringBuilder(size + "\n");
+		Random rnd = new Random(Calendar.getInstance().getTimeInMillis());
+		for (long i = 0; i < size; i++) {
+			numbers.append((Math.abs(rnd.nextLong()) % upperLimit) + " ");
+		}
+		
+		
+		Path path = Paths.get("extra.txt");
+		try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+		    writer.write(numbers.toString());
+		}
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		System.out.println(10**2);
+		try {
+			generateRandomNumbersFile(10, 100);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+//		Scanner s = new Scanner(new FileReader("hw3a.dat"));
+//		
+//		final int k = 10;
+//		int n = s.nextInt();
+//		long[] x = new long[n];
+//
+//		for (int i = 0; i < n; i++)
+//			x[i] = s.nextLong();
+//		s.close();
+//		
+//		long startTime = System.currentTimeMillis();
+//		knuthQuicksort(x, 0, x.length - 1, k);
+//		long estimatedTime = System.currentTimeMillis() - startTime;
+//		System.out.println("The sorting took " + (estimatedTime / 1000f) + " seconds to run.\n\nResult:");
+//
+//		for (int i = 0; i < x.length; i++) {
+//			if (i % 20 == 0)
+//				System.out.println("");
+//			System.out.print(x[i] + " ");
+//		}
+
+	}
+
+}

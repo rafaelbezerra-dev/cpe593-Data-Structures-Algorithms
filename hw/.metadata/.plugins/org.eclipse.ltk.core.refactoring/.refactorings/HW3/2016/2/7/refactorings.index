@@ -1,0 +1,12 @@
+1455060933840	Rename type 'Heapsort'
+1455087831533	Delete element
+1455088433260	Rename local variable 'i'
+1455088438805	Rename local variable 'j'
+1455090008464	Rename local variable 'a'
+1455136859065	Delete element
+1455140467677	Extract method 'sort'
+1455142310683	Delete element
+1455142447504	Delete element
+1455158715526	Delete element
+1455162886476	Rename type 'ProgressSample'
+1455164203298	Delete elements

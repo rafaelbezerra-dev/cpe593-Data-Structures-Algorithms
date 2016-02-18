@@ -1,0 +1,55 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Calendar;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Quicksort {
+	private static void swap(int[] x, int first, int second) {
+		x[first] = x[first] + x[second];
+		x[second] = x[first] - x[second];
+		x[first] = x[first] - x[second];
+	}
+
+	public static void quicksort(int[] x, int left, int right) {
+		if (right <= left)
+			return;
+
+		Random rnd = new Random(Calendar.getInstance().getTimeInMillis());
+		int pivot = x[Math.abs(rnd.nextInt()) % (right - left)];
+		// int pivot = 6;
+		int i = left, j = right;
+
+		while (i < j) {
+			while (x[i] <= pivot)
+				i++;
+			while (x[j] > pivot)
+				j--;
+			if (i < j)
+				swap(x, i, j);
+		}
+		
+		if((right - left) == 1) return
+		
+		quicksort(x, left, i);
+		quicksort(x, i + 1, right);
+
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		Scanner s = new Scanner(new FileReader("HW2.txt"));
+
+		int n = s.nextInt();
+		int[] x = new int[n];
+
+		for (int i = 0; i < n; i++)
+			x[i] = s.nextInt();
+
+		quicksort(x, 0, x.length - 1);
+
+		for (int i = 0; i < x.length; i++)
+			System.out.print(x[i] + " ");
+		s.close();
+
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HW3/hw3.dat&apos; to &apos;HW2.txt&apos;" description="Rename resource &apos;hw3.dat&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="hw3.dat" name="HW2.txt" stamp="1454485078953" updateReferences="true"/>
+</session>
