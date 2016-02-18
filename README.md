@@ -1,1 +1,1 @@
-# cpe593-Data-Structures-Algorithms
+# Data-Structures-Algorithms
