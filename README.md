@@ -1,1 +1,1 @@
-# Data-Structures-Algorithms
+# Applied Data Structures & Algorithms
