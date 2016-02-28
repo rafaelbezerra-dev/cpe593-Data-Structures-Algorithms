@@ -93,101 +93,119 @@ public class GrowArray {
 
 	}
 
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		BetterGrowableArray testList = new BetterGrowableArray();
-		int a;
-		for (a = 0; a <= 15; a++) {
-			if (a % 2 == 0) {
-				testList.addBack(a);
-			} else {
-				testList.addFront(a);
-			}
-		}
+	public static void test() {
 
-		testList.removeBack();
-		testList.removeBack();
-		testList.removeFront();
-		testList.removeBack();
-		testList.removeFront();
-		testList.removeFront();
-		testList.removeFront();
-		testList.removeBack();
-
-		for (; a < 25; a++) {
-			if (a % 2 == 0) {
-				testList.addBack(a);
-			} else {
-				testList.addFront(a);
-			}
-		}
-
+		final int n = 1000000;
 		BetterGrowableArray list = new BetterGrowableArray();
-		final int n = 5;
 
 		long startTime = System.currentTimeMillis();
+		for (int i = 1; i <= n; i++)
+			list.addBack(i);
+		System.out.println("addBack took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+
+		System.out.println("testing...");
+		System.out.println("	n: " + n + " and list is " + list.used());
+		System.out.println("	actual list size: " + list.size());
 		for (int i = 0; i < n; i++)
-			list.addBack(i + 1);
-		// System.out.println("addBack took: " + ((System.currentTimeMillis() -
-		// startTime) / 1000f) + " sec \n");
-		for (int i = 0; i < list.used(); i++) {
-			System.out.print(list.get(i) + " ");
-			if ((i + 1) % 100 == 0)
-				System.out.print("\n");
-		}
+			if (i + 1 != list.get(i))
+				System.out.println("	 wrong value");
+		System.out.println("");
 
 		startTime = System.currentTimeMillis();
-		for (int i = 0; i < n; i++)
+		for (int i = 1; i <= n; i++)
 			list.removeBack();
-		System.out.println("\nremoveBack took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+		System.out.println("removeBack took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
 
-		// list = new BetterGrowableArray();
 		startTime = System.currentTimeMillis();
-		for (int i = 0; i < n; i++)
-			list.addFront(i + 1);
+		for (int i = 1; i <= n; i++)
+			list.addFront(i);
 		System.out.println("addFront took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
-		for (int i = 0; i < list.used(); i++) {
-			System.out.print(list.get(i) + " ");
-			if ((i + 1) % 100 == 0)
-				System.out.print("\n");
-		}
+
+		System.out.println("testing...");
+		System.out.println("	n: " + n + " and list is " + list.used());
+		System.out.println("	actual list size: " + list.size());
+		for (int i = 0; i < n; i++)
+			if (i + 1 != list.get(n - 1 - i))
+				System.out.println("	 wrong value");
+		System.out.println("");
 
 		startTime = System.currentTimeMillis();
-		for (int i = 0; i < n; i++)
+		for (int i = 1; i <= n; i++)
 			list.removeFront();
-		System.out.println("\nremoveFront took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+		System.out.println("removeFront took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
 
-		//
-		// final String ADD_FRONT = "ADD_FRONT";
-		// final String ADD_BACK = "ADD_BACK";
-		// final String REMOVE_FRONT = "REMOVE_FRONT";
-		// final String REMOVE_BACK = "REMOVE_BACK";
-		// final String OUTPUT = "OUTPUT";
-		//
-		// Scanner in = new Scanner(new FileReader("HW4a.txt"));
-		// while(in.hasNextLine()){
-		// String commandLine = in.nextLine();
-		// if(commandLine != null && !commandLine.isEmpty()){
-		// String[] splited = commandLine.split(" ");
-		// switch (splited[0]) {
-		// case ADD_FRONT:
-		// break;
-		// case ADD_BACK:
-		// break;
-		// case REMOVE_FRONT:
-		// break;
-		// case REMOVE_BACK:
-		// break;
-		// case OUTPUT:
-		// break;
-		// default:
-		// throw new Exception("Invalid input");
-		// }
-		// }
-		// else{
-		// throw new Exception("Invalid input");
-		// }
-		// }
+		System.out.println(list.used());
+		System.out.println(list.size());
+	}
+
+	public static void test2() {
+		long startTime = System.currentTimeMillis();
+		BetterGrowableArray list = new BetterGrowableArray();
+		final int n = 1000000;
+		for (int i = 1; i <= n; i++) {
+			if (i % 2 == 0) {
+				list.addBack(i);
+			} else {
+				list.addFront(i);
+			}
+		}
+		System.out.println("test2 >> took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+		System.out.println("test2 >> n: " + n + " and list is " + list.used());
+		System.out.println("test2 >> actual list size: " + list.size());
+	}
+
+
+	final static String ADD_FRONT = "ADD_FRONT";
+	final static String ADD_BACK = "ADD_BACK";
+	final static String REMOVE_FRONT = "REMOVE_FRONT";
+	final static String REMOVE_BACK = "REMOVE_BACK";
+	final static String OUTPUT = "OUTPUT";
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		// test();
+		// test2();
+
+
+		BetterGrowableArray list = new BetterGrowableArray();
+		Scanner in = new Scanner(new FileReader("HW4a.txt"));
+		while (in.hasNextLine()) {
+			String commandLine = in.nextLine();
+			if (commandLine != null && !commandLine.isEmpty()) {
+				String[] splited = commandLine.split(" ");
+				switch (splited[0]) {
+				case ADD_FRONT:
+					for (int i = 1; i < splited.length; i++) {
+						int value = Integer.valueOf(splited[i]);
+						list.addFront(value);
+					}
+					break;
+				case ADD_BACK:
+					for (int i = 1; i < splited.length; i++) {
+						int value = Integer.valueOf(splited[i]);
+						list.addBack(value);
+					}
+					break;
+				case REMOVE_FRONT:
+					for (int i = 0; i < Integer.valueOf(splited[1]); i++) {
+						list.removeFront();
+					}
+					break;
+				case REMOVE_BACK:
+					for (int i = 0; i < Integer.valueOf(splited[1]); i++) {
+						list.removeBack();
+					}
+					break;
+				case OUTPUT:
+					for (int i = 0; i < list.used(); i++) {
+						System.out.print(list.get(i) + " ");
+					}
+					System.out.println("");
+					break;
+				default:
+					throw new Exception("Invalid input");
+				}
+			}
+		}
 
 	}
 

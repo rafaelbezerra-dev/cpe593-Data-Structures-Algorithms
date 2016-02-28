@@ -4,40 +4,62 @@ public class BetterGrowableArray {
 	private int size, head, tail;
 
 	public BetterGrowableArray() { // O(n)
-		size = 1;
+		size = 2;
 		p = new int[size]; // O(n)
-		head = tail = 0;
+		head = 0;
+		tail = 1;
 	}
 
 	public BetterGrowableArray(int size) { // O(n)
 		this.size = size;
 		p = new int[size]; // O(n)
-		head = tail = 0;
+		head = 0;
+		tail = 1;
 	}
 
 	private void growRight() { // O(n)
-		size += used();
-		int[] temp = p;
-		p = new int[size];
-		for (int i = head + 1; i < tail; i++)
-			p[i] = temp[i];
+		int used = used();
+		if (head < used) {
+			size += used;
+			int[] temp = p;
+			p = new int[size]; // O(n)
+			for (int i = head + 1; i < tail; i++) // O(n)
+				p[i] = temp[i];
+		} else {
+			int offset = (size / 2) - (used / 2);
+			for (int i = head + 1; i < tail; i++) // O(n)
+				p[i - offset] = p[i];
+			head -= offset;
+			tail -= offset;
+
+		}
 	}
 
 	private void growLeft() { // O(n)
-		size += used();
-		int[] temp = p;
-		p = new int[size];
-		int offset = p.length - temp.length;
-		for (int i = 0; i < tail; i++)
-			p[offset + i] = temp[i];
+		int used = used();
+		if ((size - tail) < used + 1) {
+			size += used;
+			int[] temp = p;
+			p = new int[size];
+			int offset = p.length - temp.length;
+			for (int i = 0; i < tail; i++)
+				p[offset + i] = temp[i];
 
-		head = offset - 1;
-		tail += offset;
+			head = offset - 1;
+			tail += offset;
+		} else {
+			int offset = (size / 2) - (used / 2);
+			for (int i = tail - 1; i > head; i--) // O(n)
+				p[i + offset] = p[i];
+			head += offset;
+			tail += offset;
+
+		}
 	}
 
 	public void addBack(int v) { // O(log n)
-		if (head == tail)
-			head--;
+		// if (head == tail)
+		// head--;
 		if (tail == p.length)
 			growRight();
 
@@ -46,8 +68,8 @@ public class BetterGrowableArray {
 	}
 
 	public void addFront(int v) { // O(n log n)
-		if (head == tail)
-			tail++;
+		// if (head == tail)
+		// tail++;
 		if (head == -1)
 			growLeft();
 
@@ -56,12 +78,14 @@ public class BetterGrowableArray {
 
 	public void removeFront() {
 		if (used() > 0)
-			p[++head] = 0;
+			++head;
+		// p[++head] = 0;
 	}
 
 	public void removeBack() {// O(1)
 		if (used() > 0)
-			p[--tail] = 0;
+			--tail;
+		// p[--tail] = 0;
 	}
 
 	public int size() { // O(1)
@@ -75,15 +99,13 @@ public class BetterGrowableArray {
 	public int get(int i) { // O(1)
 		if (i < 0 || i >= used())
 			throw new IllegalArgumentException("Index out of bounds: " + i);
-		int offset = 0;
 		return p[head + 1 + i];
 	}
 
 	void set(int i, int v) { // O(1)
 		if (i < 0 || i >= used())
 			throw new IllegalArgumentException("Index out of bounds: " + i);
-		int offset = 0;
-		p[offset + i] = v;
+		p[head + 1 + i] = v;
 	}
 
 }
