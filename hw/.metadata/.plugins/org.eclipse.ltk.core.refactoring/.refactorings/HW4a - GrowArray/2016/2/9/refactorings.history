@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;GrowArray.GrowableArray.shift(...)&apos; to &apos;shiftLeft&apos;&#x0D;&#x0A;- Original project: &apos;HW4a - GrowArray&apos;&#x0D;&#x0A;- Original element: &apos;GrowArray.GrowableArray.shift(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;GrowArray.GrowableArray.shiftLeft(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;shift&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{GrowArray.java[GrowArray[GrowableArray~shift~I~I" name="shiftLeft" references="true" stamp="1456611111215" version="1.0"/>
+</session>
