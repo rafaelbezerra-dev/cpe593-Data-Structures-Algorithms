@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.management.InvalidAttributeValueException;
@@ -94,8 +95,24 @@ public class GrowArray {
 	}
 
 	public static void test() {
+		long startTime = System.currentTimeMillis();
+		BetterGrowableArray list = new BetterGrowableArray();
+		final int n = 100000000;
+		for (int i = 1; i <= n; i++) {
+			if (i % 2 == 0) {
+				list.addBack(i);
+			} else {
+				list.addFront(i);
+			}
+		}
+		System.out.println("test >> took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+		System.out.println("test >> n: " + n + " and list is " + list.used());
+		System.out.println("test >> actual list size: " + list.size());
+	}
 
-		final int n = 1000000;
+	public static void test1() {
+
+		final int n = 100000000;
 		BetterGrowableArray list = new BetterGrowableArray();
 
 		long startTime = System.currentTimeMillis();
@@ -134,26 +151,54 @@ public class GrowArray {
 			list.removeFront();
 		System.out.println("removeFront took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
 
-		System.out.println(list.used());
-		System.out.println(list.size());
+		System.out.print("\n======================\n");
 	}
-
+	
 	public static void test2() {
-		long startTime = System.currentTimeMillis();
+		final int n = 100000000;
 		BetterGrowableArray list = new BetterGrowableArray();
-		final int n = 1000000;
-		for (int i = 1; i <= n; i++) {
-			if (i % 2 == 0) {
-				list.addBack(i);
-			} else {
-				list.addFront(i);
-			}
-		}
-		System.out.println("test2 >> took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
-		System.out.println("test2 >> n: " + n + " and list is " + list.used());
-		System.out.println("test2 >> actual list size: " + list.size());
+
+		long startTime = System.currentTimeMillis();		
+		for (int i = 1; i <= n; i++)
+			list.addFront(i);
+		System.out.println("addFront took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+
+		System.out.println("testing...");
+		System.out.println("	n: " + n + " and list is " + list.used());
+		System.out.println("	actual list size: " + list.size());
+		for (int i = 0; i < n; i++)
+			if (i + 1 != list.get(n - 1 - i))
+				System.out.println("	 wrong value");
+		System.out.println("");
+
+		startTime = System.currentTimeMillis();
+		for (int i = 1; i <= n; i++)
+			list.removeFront();
+		System.out.println("removeFront took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+
+		startTime = System.currentTimeMillis();
+		for (int i = 1; i <= n; i++)
+			list.addBack(i);
+		System.out.println("addBack took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+
+		System.out.println("testing...");
+		System.out.println("	n: " + n + " and list is " + list.used());
+		System.out.println("	actual list size: " + list.size());
+		for (int i = 0; i < n; i++)
+			if (i + 1 != list.get(i))
+				System.out.println("	 wrong value");
+		System.out.println("");
+
+		startTime = System.currentTimeMillis();
+		for (int i = 1; i <= n; i++)
+			list.removeBack();
+		System.out.println("removeBack took: " + ((System.currentTimeMillis() - startTime) / 1000f) + " sec \n");
+
+		System.out.print("\n======================\n");
+
 	}
 
+	
 
 	final static String ADD_FRONT = "ADD_FRONT";
 	final static String ADD_BACK = "ADD_BACK";
@@ -162,9 +207,11 @@ public class GrowArray {
 	final static String OUTPUT = "OUTPUT";
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		// test();
-		// test2();
+		 test();
+		 test1();
+		 test2();
 
+		 System.out.print("\n\n");
 
 		BetterGrowableArray list = new BetterGrowableArray();
 		Scanner in = new Scanner(new FileReader("HW4a.txt"));

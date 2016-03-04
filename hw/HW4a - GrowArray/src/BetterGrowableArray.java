@@ -57,9 +57,7 @@ public class BetterGrowableArray {
 		}
 	}
 
-	public void addBack(int v) { // O(log n)
-		// if (head == tail)
-		// head--;
+	public void addBack(int v) { // O(2n)
 		if (tail == p.length)
 			growRight();
 
@@ -67,16 +65,14 @@ public class BetterGrowableArray {
 
 	}
 
-	public void addFront(int v) { // O(n log n)
-		// if (head == tail)
-		// tail++;
+	public void addFront(int v) { // O(2n)
 		if (head == -1)
 			growLeft();
 
 		p[head--] = v;
 	}
 
-	public void removeFront() {
+	public void removeFront() { // O(1)
 		if (used() > 0)
 			++head;
 		// p[++head] = 0;
