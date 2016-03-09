@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;HW.dat&apos; to &apos;HW3c - (Optional) Build a list&apos;&#x0D;&#x0A;- Original project: &apos;HW3c - (Optional) Build a list&apos;&#x0D;&#x0A;- Destination element: &apos;HW3c - (Optional) Build a list&apos;&#x0D;&#x0A;- Original element: &apos;HW.dat&apos;" description="Copy file" destination="=HW3c - \(Optional) Build a list" element1="HW.dat" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1457515324050" units="0" version="1.0"/>
+</session>
