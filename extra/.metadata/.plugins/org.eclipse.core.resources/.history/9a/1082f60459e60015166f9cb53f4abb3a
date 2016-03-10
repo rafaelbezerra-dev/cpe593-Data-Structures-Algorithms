@@ -1,0 +1,17 @@
+
+public class RedBlackTree {
+	
+	public static class RBTree
+	{
+		public static class Node{
+			Node left, right, parent;
+		}
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

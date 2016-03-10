@@ -1,0 +1,45 @@
+
+public class RedBlackTree {
+	
+	public static class RBTree
+	{
+		public static class Node{
+			Node left, right, parent;
+			int val;
+			public Node(Node left, Node right, Node parent, int val) {
+//				super();
+				this.left = left;
+				this.right = right;
+				this.parent = parent;
+				this.val = val;
+			}
+		
+			
+			Node grandparent(struct node *n)
+			{
+			 if (parent != null)
+			  return n.parent.parent;
+			 else
+			  return null;
+			}
+
+			struct node *uncle(struct node *n)
+			{
+			 struct node *g = grandparent(n);
+			 if (g == NULL)
+			  return NULL; // No grandparent means no uncle
+			 if (n->parent == g->left)
+			  return g->right;
+			 else
+			  return g->left;
+			}
+		}
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

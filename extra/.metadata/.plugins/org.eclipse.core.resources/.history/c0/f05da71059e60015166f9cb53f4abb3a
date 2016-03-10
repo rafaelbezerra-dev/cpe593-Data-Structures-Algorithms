@@ -1,0 +1,26 @@
+
+public class RedBlackTree {
+	
+	public static class RBTree
+	{
+		public static class Node{
+			Node left, right, parent;
+			int val;
+			public Node(Node left, Node right, Node parent, int val) {
+				super();
+				this.left = left;
+				this.right = right;
+				this.parent = parent;
+				this.val = val;
+			}
+			
+		}
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
