@@ -1,0 +1,9 @@
+
+public class Benchmark {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final String input = "2 3 + 4 5 + +"
+;	}
+
+}

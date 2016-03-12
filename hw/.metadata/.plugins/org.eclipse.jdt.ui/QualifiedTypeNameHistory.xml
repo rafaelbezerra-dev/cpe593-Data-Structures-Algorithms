@@ -39,12 +39,18 @@
 <fullyQualifiedTypeName name="GrowableArray.BetterGrowableArray"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="Main"/>
 <fullyQualifiedTypeName name="java.nio.file.Files"/>
 <fullyQualifiedTypeName name="java.nio.file.Path"/>
 <fullyQualifiedTypeName name="java.nio.file.Paths"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="LinkedList.Node"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="LinkedList"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="DoubleLinkedList"/>
+<fullyQualifiedTypeName name="javax.management.openmbean.OpenDataException"/>
+<fullyQualifiedTypeName name="Tree.Node"/>
+<fullyQualifiedTypeName name="Tree.NodeType"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="Tree"/>
 </qualifiedTypeNameHistroy>

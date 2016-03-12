@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;RedBlackTree.RBTree.Node.swapParent()&apos; to &apos;swapChildForParent&apos;&#x0D;&#x0A;- Original project: &apos;RB Tree&apos;&#x0D;&#x0A;- Original element: &apos;RedBlackTree.RBTree.Node.swapParent()&apos;&#x0D;&#x0A;- Renamed element: &apos;RedBlackTree.RBTree.Node.swapChildForParent()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;swapParent&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{RedBlackTree.java[RedBlackTree[RBTree[Node~swapParent" name="swapChildForParent" references="true" stamp="1457576823656" version="1.0"/>
+</session>

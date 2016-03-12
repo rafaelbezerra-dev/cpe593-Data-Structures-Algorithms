@@ -1,3 +1,8 @@
 1457560092096	Rename method 'used'
 1457562224878	Rename local variable 'value'
 1457562228917	Rename local variable 'i'
+1457647482303	Rename type 'LinkedList'
+1457767280861	Extract method 'test1'
+1457767564626	Copy file
+1457767575023	Rename resource 'HW4b2.txt'
+1457767582034	Rename resource 'HW4.test.txt.txt'

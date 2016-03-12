@@ -1,0 +1,51 @@
+
+public class Benchmark {
+
+	static int size = 100000;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DoubleLinkedList list = new DoubleLinkedList();
+		
+		long start = System.currentTimeMillis();
+		for (int i = 1; i <= size; i++) {
+			list.addFront(i);
+		}
+		System.out.println("addFront: " + (System.currentTimeMillis() - start));
+		
+		start = System.currentTimeMillis();
+		for (int i = 1; i <= size; i++) {
+			list.addBack(i);
+		}
+		System.out.println("addBack: " + (System.currentTimeMillis() - start));
+		
+		start = System.currentTimeMillis();
+		for (int i = 0; i < size; i++) {
+			list.removeBack();
+		}
+		System.out.println("removeBack: " + (System.currentTimeMillis() - start));
+		
+		start = System.currentTimeMillis();
+		for (int i = 0; i < size; i++) {
+			list.removeFront();
+		}
+		System.out.println("removeFront: " + (System.currentTimeMillis() - start));
+		
+		start = System.currentTimeMillis();
+		for (int i = 1; i <= size; i++) {
+			if (i%2 == 0)
+				list.addFront(i);
+			else
+				list.addBack(i);
+		}
+		System.out.println("addFront & addBack: " + (System.currentTimeMillis() - start));
+		int s = list.size();
+		for (int i = 0; i < s; i++) {
+			System.out.print(i + " ");
+			if((i+1) % 100 == 0){
+				
+			}
+		}
+
+	}
+
+}

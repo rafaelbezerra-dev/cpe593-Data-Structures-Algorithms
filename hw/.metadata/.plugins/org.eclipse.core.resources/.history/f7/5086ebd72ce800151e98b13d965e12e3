@@ -1,0 +1,16 @@
+
+public class Benchmark {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final String input = "2 3 + 4 5 + +";
+		final char[] charArr = input.toCharArray();
+		
+		Tree t = new Tree();
+		
+		for (int i = charArr.length - 1; i > -1; i--) {
+			t.add(String.valueOf(charArr[i]));
+		}
+	}
+
+}
