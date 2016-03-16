@@ -84,9 +84,10 @@ public class Tree {
 			if (root.right == null)
 				root.right = new Node(root, v);
 			else
-				if (root.right.type == NodeType.OPERATOR)
+				if (root.right.type == NodeType.OPERATOR){
 					root = root.right;
 					root.add(v);
+				}
 				else
 					if (root.left == null)
 						root.left = new Node(root, v);
