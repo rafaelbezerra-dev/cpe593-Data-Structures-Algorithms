@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;Trie.add(...)&apos; to &apos;load&apos;&#x0D;&#x0A;- Original project: &apos;HW5a - Trie Dictionary&apos;&#x0D;&#x0A;- Original element: &apos;Trie.add(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;Trie.load(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;add&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{Trie.java[Trie~add~QString;" name="load" references="true" stamp="1458524539460" version="1.0"/>
+</session>

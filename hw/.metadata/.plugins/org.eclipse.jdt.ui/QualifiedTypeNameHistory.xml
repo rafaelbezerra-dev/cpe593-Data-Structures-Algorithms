@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.BitSet"/>
-<fullyQualifiedTypeName name="java.lang.Long"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="javax.xml.stream.util.StreamReaderDelegate"/>
 <fullyQualifiedTypeName name="java.util.stream.Stream"/>
@@ -59,4 +57,7 @@
 <fullyQualifiedTypeName name="java.util.OptionalDouble"/>
 <fullyQualifiedTypeName name="java.lang.management.MemoryUsage"/>
 <fullyQualifiedTypeName name="Benchmark"/>
+<fullyQualifiedTypeName name="Tries"/>
+<fullyQualifiedTypeName name="Tries.Node"/>
+<fullyQualifiedTypeName name="Trie"/>
 </qualifiedTypeNameHistroy>
