@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Trie {
 
@@ -69,19 +70,38 @@ public class Trie {
 		return this.children[index].constains(word.substring(1));
 	}
 
-	boolean startsWith(String prefix) {
-		if (prefix.isEmpty()) {
-			return true;
-		}
+	ArrayList<String> startsWith(String prefix) {
+		return startsWith(prefix.toCharArray(), 0, prefix.length() - 1);
+	}
 
-		char letter = prefix.charAt(0);
+	ArrayList<String> startsWith(char[] prefix, int start, int end) {
+		char letter = prefix[start];
 		int index = letter - 'a';
 
 		if (this.children[index] == null) {
-			return false;
+			return null;
 		}
 
-		return this.children[index].constains(prefix.substring(1));
+		if (start+1 > end)
+			return getWords(String.valueOf(prefix));
+		else
+			return this.children[index].startsWith(prefix, start + 1, end);
+	}
+
+	private ArrayList<String> getWords(String prefix) {
+		// TODO Auto-generated method stub
+		ArrayList<String> words = new ArrayList<>();
+		// prefix += String.valueOf(c);
+		if (this.isWord)
+			words.add(prefix + this.c);
+		for (int i = 0; i < children.length; i++)
+			if (children[i] != null) {
+				ArrayList<String> w = children[i].getWords(prefix + this.c);
+				if (!w.isEmpty())
+					words.addAll(w);
+			}
+
+		return words;
 	}
 
 	@Override
