@@ -118,9 +118,6 @@ public class DoubleLinkedList {
 				tail = tail.prev;
 				tail.next = null;
 			}
-			else{
-				tail = null;
-			}
 		}
 
 	}
@@ -131,9 +128,6 @@ public class DoubleLinkedList {
 			if (head.next != null) {
 				head = head.next;
 				head.prev = null;
-			}
-			else{
-				head = null;
 			}
 		}
 	}
