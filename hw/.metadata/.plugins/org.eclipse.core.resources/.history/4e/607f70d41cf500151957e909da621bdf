@@ -85,7 +85,7 @@ public class Trie {
 			return null;
 		}
 
-		if (start + 1 > end)
+		if (start+1 > end)
 			return getWords(String.valueOf(prefix));
 		else
 			return this.children[index].startsWith(prefix, start + 1, end);
@@ -112,7 +112,7 @@ public class Trie {
 		// TODO Auto-generated method stub
 		return String.valueOf(c);
 	}
-
+	
 	public static void main(String[] args) throws FileNotFoundException {
 
 		Trie dict = new Trie();
@@ -125,19 +125,19 @@ public class Trie {
 			// System.out.println(line);
 		}
 		in.close();
-
-		// ArrayList<String> list = dict.startsWith("cat");
-		// for (int i = 0; i < list.size(); i++) {
-		// System.out.println(list.get(i));
+//
+//		ArrayList<String> list = dict.startsWith("cat");
+//		for (int i = 0; i < list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
+		
+		System.out.println("");
+		// in = new Scanner(new FileReader("hw7.dat"));
+		// while (in.hasNextLine()) {
+		// String line = in.nextLine();
+		// System.out.println(line + "\t" + dict.constains(line));
 		// }
-
-		// System.out.println("");
-		in = new Scanner(new FileReader("hw7.dat"));
-		while (in.hasNextLine()) {
-			String line = in.nextLine();
-			System.out.println(line + "\t" + dict.constains(line));
-		}
-		in.close();
+		// in.close();
 
 	}
 
