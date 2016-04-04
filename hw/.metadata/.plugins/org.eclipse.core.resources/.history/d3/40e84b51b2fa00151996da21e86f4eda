@@ -1,0 +1,52 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Boggle {
+	
+	static class BoggleBoard {
+		char[][] board;
+		boolean[][] visited;
+		
+		public BoggleBoard(int n) {
+			board = new char[n][n];
+			visited = new boolean[n][n];
+		}
+		
+		public void addInline(int pos, char v){
+			int x = 0;
+			int y = 0;
+		}
+
+		
+		
+		public boolean canMoveToPos(int x, int y) {
+			if (x >= 0 && y >= 0 && x < board.length && y < board[x].length){
+				return !visited[x][y]
+			}
+			return false;
+		}
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		Trie dict = new Trie();
+		BoggleBoard board;
+		Scanner in = new Scanner(new FileReader("dictionary.txt"));
+		while (in.hasNextLine()) {
+			String line = in.nextLine();
+			dict.add(line);
+		}
+		in.close();
+
+		in = new Scanner(new FileReader("boggle.dat"));
+		board = new BoggleBoard(in.nextInt());
+		while (in.hasNextLine()) {
+			String line = in.nextLine();
+			System.out.println(line + "\t" + dict.contains(line));
+		}
+		in.close();
+
+	}
+
+}
