@@ -100,11 +100,23 @@ public class RedBlackTree {
 				saved_p.left = saved_right_n;
 			}
 		}
+	
+		private Node root;
+		
+		public void add(int val){
+			if (root == null){
+				root = new Node(null, null, null, val);
+			}
+			else{
+				
+			}
+		}
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		RBTree tree = new RBTree();
+		
 	}
 
 }

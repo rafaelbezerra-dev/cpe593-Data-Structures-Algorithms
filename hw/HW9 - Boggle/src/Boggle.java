@@ -9,9 +9,75 @@
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Boggle {
+	
+	static class Trie {
+
+		char c;
+		Trie[] children;
+		boolean isWord;
+
+		public Trie() {
+			this((char) 0);
+		}
+
+		public Trie(char c) {
+			this.c = c;
+			this.children = new Trie['z' - 'A' + 1];
+			this.isWord = false;
+		}
+
+		public void add(String word) {
+			if (word.isEmpty()) {
+				this.isWord = true;
+				return;
+			}
+
+			char letter = word.charAt(0);
+			int index = letter - 'A';
+
+			if (this.children[index] == null) {
+				this.children[index] = new Trie(letter);
+			}
+
+			this.children[index].add(word.substring(1));
+		}
+		
+		public boolean contains(String word) {
+			if (word.isEmpty())
+				if (this.isWord)
+					return true;
+				else
+					return false;
+
+			char letter = word.charAt(0);
+			int index = letter - 'A';
+
+			if (this.children[index] == null) {
+				return false;
+			}
+
+			return this.children[index].contains(word.substring(1));
+		}
+
+		public boolean containsPrefix(String word) {
+			if (word.isEmpty())
+				return true;
+
+			char letter = word.charAt(0);
+			int index = letter - 'A';
+
+			if (this.children[index] == null) {
+				return false;
+			}
+
+			return this.children[index].containsPrefix(word.substring(1));
+		}
+
+	}
 
 	static class BoggleBoard {
 		char[][] board;
@@ -39,33 +105,24 @@ public class Boggle {
 			return !visited[i][j];
 		}
 
-		// show all words, starting from each possible starting place
 		public void showWords() {
 			for (int i = 0; i < board.length; i++)
 				for (int j = 0; j < board.length; j++)
 					dfs("", i, j);
 		}
 
-		// run depth first search starting at cell (i, j)
 		private void dfs(String prefix, int i, int j) {
-			if (i < 0 || j < 0 || i >= board.length || j >= board.length)
-				return;
-			// can't visited a cell more than once
-			if (visited[i][j])
-				return;
-			// key to efficiency of backtracking algorithm
+			if (!canMoveToPos(i, j)) return;
+
 			if (!dict.containsPrefix(prefix))
 				return;
 
-			// not allowed to reuse a letter
 			visited[i][j] = true;
 
-			// found a word
 			prefix = prefix + board[i][j];
 			if (prefix.length() > 2 && dict.contains(prefix))
 				System.out.println(prefix);
 
-			// consider all neighbors
 			for (int ii = i-1; ii <= i+1; ii++)
 				for (int jj = j-1; jj <= j+1; jj++)
 					dfs(prefix, ii, jj);
@@ -96,17 +153,6 @@ public class Boggle {
 			dict.add(line);
 		}
 		in.close();
-//		
-//		in = new Scanner(new FileReader("example.txt"));
-//		java.util.ArrayList<String> list = new java.util.ArrayList<>();
-//		while(in.hasNextLine()){
-//			list.add(in.next());
-//		}
-//		java.util.Collections.sort(list);
-//		for (String string : list) {
-//			System.out.println(string);
-//		}
-		
 
 		in = new Scanner(new FileReader("boggle.dat"));
 		int n = in.nextInt();
