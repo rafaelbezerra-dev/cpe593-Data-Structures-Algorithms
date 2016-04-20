@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HW9 - Boggle/dict.txt&apos; to &apos;dictionary2.txt&apos;" description="Rename resource &apos;dict.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="dict.txt" name="dictionary2.txt" stamp="1461113058234" updateReferences="true"/>
+</session>
