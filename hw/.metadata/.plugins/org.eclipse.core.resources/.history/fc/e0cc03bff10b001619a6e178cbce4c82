@@ -147,7 +147,7 @@ public class Boggle {
 
 		Trie dict = new Trie();
 		BoggleBoard board;
-		Scanner in = new Scanner(new FileReader("dictionary.txt"));
+		Scanner in = new Scanner(new FileReader("dictionary2.txt"));
 		while (in.hasNextLine()) {
 			String line = in.nextLine();
 			dict.add(line);
